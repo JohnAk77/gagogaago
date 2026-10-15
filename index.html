@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#000;
+  color:white;
+  overflow:hidden;
+  height:100vh;
+}
+
+.bg{
+  position:fixed;
+  inset:0;
+  background:url("https://i.pinimg.com/736x/28/80/ea/2880ea516871983614933a6201b8d838.jpg") center/cover;
+  filter:brightness(.22) blur(2px);
+  z-index:-2;
+}
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:-1;
+}
+
+.top-title{
+  position:absolute;
+  top:18px;
+  width:100%;
+  text-align:center;
+  font-size:52px;
+  font-family:'Orbitron',sans-serif;
+  letter-spacing:5px;
+  text-transform:uppercase;
+}
+
+.top-title span{
+  color:#ffd000;
+  text-shadow:0 0 15px #ffd000;
+}
+
+.container{
+  width:100%;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:60px;
+  padding:40px;
+}
+
+.left-box{
+  width:360px;
+  height:650px;
+  border:2px solid #ffd000;
+  border-radius:50px;
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(8px);
+  padding:35px 25px;
+  box-shadow: 0 0 25px rgba(255,208,0,.3), inset 0 0 20px rgba(255,208,0,.08);
+  text-align:center;
+}
+
+.avatar{
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-top:10px;
+  border:4px solid rgba(255,255,255,.1);
+  box-shadow: 0 0 25px rgba(255,255,255,.15);
+}
+
+.name{
+  margin-top:25px;
+  font-size:55px;
+  font-family:'Orbitron',sans-serif;
+  letter-spacing:4px;
+}
+
+.small{
+  margin-top:8px;
+  color:#aaa;
+  font-size:14px;
+  letter-spacing:2px;
+}
+
+.timer{
+  margin:30px auto;
+  width:230px;
+  padding:15px;
+  border-radius:15px;
+  border:1px solid rgba(255,255,255,.08);
+  background:#050505;
+  font-size:30px;
+  font-family:'Orbitron',sans-serif;
+  letter-spacing:3px;
+}
+
+.socials{
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  gap:18px;
+}
+
+.socials a{
+  width:55px;
+  height:55px;
+  border-radius:15px;
+  background:#111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:#ffd000;
+  font-size:22px;
+  transition:.3s;
+}
+
+.socials a:hover{
+  transform:translateY(-5px) scale(1.07);
+  box-shadow: 0 0 20px #ffd000;
+}
+
+.right-box{
+  width:650px;
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+}
+
+.info-card{
+  background:rgba(0,0,0,.45);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;
+  padding:30px;
+  backdrop-filter:blur(8px);
+  box-shadow: 0 0 20px rgba(255,208,0,.08);
+}
+
+.info-title{
+  color:#ffd000;
+  font-size:26px;
+  margin-bottom:15px;
+  font-family:'Orbitron',sans-serif;
+}
+
+.info-content{
+  color:#ddd;
+  font-size:17px;
+  line-height:1.7;
+  word-break:break-word;
+}
+
+.bottom-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-bar {
+    width: 100%;
+    height: 45px;
+    border-top: 2px solid #ff0000;
+    border-bottom: 2px solid #ff0000;
+    background: rgba(0, 0, 0, 0.61);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #ff9900d2;
+}
+
+.bottom-bar span {
+    color: #ffffffcc;
+    margin: 0 10px;
+}
+
+.footer-text {
+    width: 100%;
+    text-align: center;
+    color: #888;
+    font-family: sans-serif;
+    font-size: 12px;
+    padding: 5px 0;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: slide 60s linear infinite;
+}
+
+.spacer {
+    margin: 0 40px;
+}
+
+@keyframes slide {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+}
+
+@media(max-width:1000px){
+  body{
+    overflow:auto;
+  }
+  .container{
+    flex-direction:column;
+    padding-top:140px;
+    height:auto;
+  }
+  .right-box{
+    width:100%;
+  }
+  .top-title{
+    font-size:25px;
+    padding:0 10px;
+  }
+  .left-box{
+    width:100%;
+    max-width:360px;
+  }
+}
+
+/* Click Overlay Screen */
+#click-screen {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.4s ease;
+}
+
+#click-screen h1 {
+  font-family: 'Orbitron', sans-serif;
+  color: #ffd000;
+  font-size: 36px;
+  text-shadow: 0 0 20px rgba(255, 208, 0, 0.6);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#click-screen p {
+  color: #aaa;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+#music-toggle {
+  position: fixed;
+  right: 18px;
+  bottom: 62px;
+  z-index: 10;
+  padding: 12px 18px;
+  border: 1px solid #ffd000;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, .85);
+  color: #ffd000;
+  font: 600 13px 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+#music-toggle:hover {
+  box-shadow: 0 0 18px rgba(255, 208, 0, .55);
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<!-- Fullscreen click-to-enter gateway overlay -->
+<div id="click-screen">
+  <h1>CLICK ANYWHERE TO ENTER</h1>
+  <p>[ INITIALIZING AUDIO SYSTEM ]</p>
+</div>
+
+<!-- Hidden YouTube Audio Embed -->
+<div id="youtube-player" style="display:none;"></div>
+<button id="music-toggle" type="button" aria-label="Play background music">▶ PLAY MUSIC</button>
+
+<div class="top-title">
+  THIS SERVER HAS BEEN DEFACED BY DIIDOV<span>Amiwa</span>
+</div>
+
+<div class="container">
+  <div class="left-box">
+    <img
+    class="avatar"
+    src="https://i.pinimg.com/736x/cc/28/0d/cc280d113acbf806f5ff3dbce7698774.jpg">
+
+    <div class="large" style="font-family:'Orbitron',sans-serif; font-size:24px; margin-top:15px; letter-spacing:2px;">
+      AMIWA X KUPALINO
+    </div>
+
+    <div class="timer" id="clock">
+      00 : 00 : 00
+    </div>
+
+    <div class="socials">
+      <a href="https://www.youtube.com/@Grxy-amiwa" target="_blank">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a href="https://discord.gg/Uh8gS4sC" target="_blank">
+        <i class="fab fa-discord"></i>
+      </a>
+      <a href="https://www.tiktok.com/@diidov.com" target="_blank">
+        <i class="fab fa-tiktok"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="right-box">
+    <div class="info-card">
+      <div class="info-title">User-Agent</div>
+      <div class="info-content" id="ua">Loading...</div>
+    </div>
+    <div class="info-card">
+      <div class="info-title">Client IP</div>
+      <div class="info-content">127.0.0.1:666</div>
+    </div>
+    <div class="info-card">
+      <div class="info-title">Execution Time</div>
+      <div class="info-content" id="exec">0.000000000 seconds</div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-container">
+    <div class="bottom-bar">
+        <div class="marquee-content">
+            <span class="white-label">S/O</span> <span class="separator">|</span> AMIWA - KUPALINO DONT FUCK AMIWA OKAY?
+            <span class="spacer"></span>
+            <span class="white-label">Members</span> <span class="separator">|</span> KYLL - GRXY - MANTO - WOMY - JULIO - SENKAI - XYPHER - MCPLOT - JNAS - BERTO - NAMI - PIPTH - SNOWY - KATE - SOFI - DIIDOV
+        </div>
+    </div>
+    <div class="footer-text">
+        ©amiwa.porhub || amiwa.club
+    </div>
+</div>
+
+<!-- YouTube IFrame API Script -->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+let player;
+let playerReady = false;
+const musicButton = document.getElementById("music-toggle");
+const clickScreen = document.getElementById("click-screen");
+const videoId = "Os4WFOsJE_I";
+
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player("youtube-player", {
+    videoId,
+    playerVars: {
+      autoplay: 0,
+      controls: 0,
+      loop: 1,
+      playlist: videoId,
+      playsinline: 1,
+      rel: 0
+    },
+    events: {
+      onReady: function () {
+        playerReady = true;
+      },
+      onStateChange: function (event) {
+        if (event.data === YT.PlayerState.PLAYING) {
+          musicButton.textContent = "❚❚ PAUSE MUSIC";
+        } else if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+          musicButton.textContent = "▶ PLAY MUSIC";
+        }
+      }
+    }
+  });
+}
+
+// When the user clicks the gateway overlay anywhere, it hides the screen and safely starts the music
+clickScreen.addEventListener("click", function() {
+  if (playerReady && player) {
+    player.setVolume(70);
+    player.playVideo();
+  }
+  clickScreen.style.opacity = "0";
+  setTimeout(() => {
+    clickScreen.style.display = "none";
+  }, 400);
+});
+
+musicButton.addEventListener("click", function () {
+  if (!playerReady || !player) return;
+  if (player.getPlayerState() === YT.PlayerState.PLAYING) {
+    player.pauseVideo();
+  } else {
+    player.setVolume(70);
+    player.playVideo();
+  }
+});
+
+document.getElementById("ua").innerText = navigator.userAgent;
+
+setInterval(() => {
+  const num = Math.random().toFixed(9);
+  document.getElementById("exec").innerText = num + " seconds";
+}, 500);
+
+function updateClock() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2, "0");
+  const m = String(now.getMinutes()).padStart(2, "0");
+  const s = String(now.getSeconds()).padStart(2, "0");
+  document.getElementById("clock").innerHTML = `${h} : ${m} : ${s}`;
+}
+setInterval(updateClock, 1000);
+updateClock();
+</script>
+
+</body>
+</html>
